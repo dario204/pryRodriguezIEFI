@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pryRodriguezIEFI", "pryRodriguezIEFI.csproj", "{F31588BF-1BE9-4141-B503-7B617B422157}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F31588BF-1BE9-4141-B503-7B617B422157}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F31588BF-1BE9-4141-B503-7B617B422157}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F31588BF-1BE9-4141-B503-7B617B422157}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F31588BF-1BE9-4141-B503-7B617B422157}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3158E26F-4D43-4E7B-B640-9A1404607AAB}
+	EndGlobalSection
+EndGlobal
