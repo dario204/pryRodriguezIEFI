@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCarga));
             this.lblTrebol = new System.Windows.Forms.Label();
             this.lblPaises = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cboPaises = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnCargar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
@@ -43,9 +43,10 @@
             this.lblTrebol.AutoSize = true;
             this.lblTrebol.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTrebol.ForeColor = System.Drawing.Color.Blue;
-            this.lblTrebol.Location = new System.Drawing.Point(189, 9);
+            this.lblTrebol.Location = new System.Drawing.Point(252, 11);
+            this.lblTrebol.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTrebol.Name = "lblTrebol";
-            this.lblTrebol.Size = new System.Drawing.Size(196, 31);
+            this.lblTrebol.Size = new System.Drawing.Size(244, 39);
             this.lblTrebol.TabIndex = 2;
             this.lblTrebol.Text = "Club el Trebol";
             // 
@@ -53,58 +54,65 @@
             // 
             this.lblPaises.AutoSize = true;
             this.lblPaises.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPaises.Location = new System.Drawing.Point(78, 91);
+            this.lblPaises.Location = new System.Drawing.Point(104, 112);
+            this.lblPaises.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPaises.Name = "lblPaises";
-            this.lblPaises.Size = new System.Drawing.Size(55, 16);
+            this.lblPaises.Size = new System.Drawing.Size(66, 20);
             this.lblPaises.TabIndex = 3;
             this.lblPaises.Text = "Paises";
             // 
-            // comboBox1
+            // cboPaises
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(151, 86);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(119, 21);
-            this.comboBox1.TabIndex = 4;
+            this.cboPaises.FormattingEnabled = true;
+            this.cboPaises.Location = new System.Drawing.Point(201, 106);
+            this.cboPaises.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboPaises.Name = "cboPaises";
+            this.cboPaises.Size = new System.Drawing.Size(157, 24);
+            this.cboPaises.TabIndex = 4;
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(81, 139);
+            this.dataGridView1.Location = new System.Drawing.Point(108, 171);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(351, 162);
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.Size = new System.Drawing.Size(468, 199);
             this.dataGridView1.TabIndex = 5;
             // 
             // btnCargar
             // 
-            this.btnCargar.Location = new System.Drawing.Point(334, 79);
+            this.btnCargar.Location = new System.Drawing.Point(445, 97);
+            this.btnCargar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCargar.Name = "btnCargar";
-            this.btnCargar.Size = new System.Drawing.Size(98, 33);
+            this.btnCargar.Size = new System.Drawing.Size(131, 41);
             this.btnCargar.TabIndex = 6;
             this.btnCargar.Text = "Cargar";
             this.btnCargar.UseVisualStyleBackColor = true;
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(431, 400);
+            this.btnSalir.Location = new System.Drawing.Point(575, 492);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(94, 37);
+            this.btnSalir.Size = new System.Drawing.Size(125, 46);
             this.btnSalir.TabIndex = 7;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             // 
             // frmCarga
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(552, 449);
+            this.ClientSize = new System.Drawing.Size(736, 553);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnCargar);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cboPaises);
             this.Controls.Add(this.lblPaises);
             this.Controls.Add(this.lblTrebol);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmCarga";
             this.Text = "Carga de Paises";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -117,7 +125,7 @@
 
         private System.Windows.Forms.Label lblTrebol;
         private System.Windows.Forms.Label lblPaises;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cboPaises;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnCargar;
         private System.Windows.Forms.Button btnSalir;

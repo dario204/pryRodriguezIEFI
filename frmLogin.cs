@@ -20,8 +20,8 @@ namespace pryRodriguezIEFI
 
         private void btnRegistar_Click(object sender, EventArgs e)
         {
-            if (cboNombre.SelectedIndex != -1 && cboApellido.SelectedIndex!= -1 && 
-                cboEdad.SelectedIndex!= -1 && cboPais.SelectedIndex!= -1 && mtbPorcentaje.Text!= "" && mtbIngreso.Text!="")
+            if (txtNombre.Text != "" && txtApellido.Text!= "" && 
+                mtbEdad.Text!= "" && cboPais.SelectedIndex!= -1 && mtbPuntaje.Text!= "" && Text!="")
             {
                 btnRegistar.Enabled = true;
             }
@@ -35,7 +35,7 @@ namespace pryRodriguezIEFI
         private void frmLogin_Load(object sender, EventArgs e)
         {
             objManejoBD.ConectarBaseDatos();
-            objManejoBD.CargarCboNombre(cboNombre);
+            
         }
     }
 }
