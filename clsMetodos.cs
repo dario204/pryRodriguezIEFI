@@ -66,5 +66,38 @@ namespace pryRodriguezIEFI
             }
             miLector.Close();
         }
+        public void Registrarsocio(string Nombre, string Apellido, string Edad, string Pais, int Puntaje,bool Sexo)
+        {
+            string CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=El_Club.accdb;";
+            using (OleDbConnection miConexion= new OleDbConnection(CadenaConexion)) //Conexion a la base de datos
+                                                                                    //Se utiliza el bloque using garantizar que la conexión se cierre adecuadamente
+            {
+                miConexion.Open();//abre la conexion
+                string AgregarBD = "INSERT INTO SOCIOS (NOMBRE,APELLIDO,LUGAR_NACIMIENTO,EDAD,SEXO,,PUNTAJE) " +
+                    "VALUES (@Nombre,@Apellido,@Pais,@Edad,@Sexo,@Puntaje)"; //Crear la consulta SQL
+                try
+                {
+                    miComando = new OleDbCommand();
+                    miComando.Connection.Open();
+                    miComando.CommandType = CommandType.Text;
+                    miComando.CommandText=AgregarBD;
+                    //Asignar valores a los parametros
+                    miComando.Parameters.AddWithValue("@Nombre", Nombre);
+                    miComando.Parameters.AddWithValue("@Apellido", Apellido);
+                    miComando.Parameters.AddWithValue("@Pais",Pais);
+                    miComando.Parameters.AddWithValue("@Edad", Edad);
+                    miComando.Parameters.AddWithValue("@Sexo",Sexo);
+                    miComando.Parameters.AddWithValue("@Puntaje", Puntaje);
+                    miComando.ExecuteNonQuery(); //Ejecutar el comando
+                    miConexion.Close(); //cerrar la conexion
+
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show("Error:" + ex.Message);
+                }
+            }
+        }
     }
 }

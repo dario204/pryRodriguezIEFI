@@ -65,7 +65,7 @@
             // 
             this.cboPaises.FormattingEnabled = true;
             this.cboPaises.Location = new System.Drawing.Point(201, 106);
-            this.cboPaises.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboPaises.Margin = new System.Windows.Forms.Padding(4);
             this.cboPaises.Name = "cboPaises";
             this.cboPaises.Size = new System.Drawing.Size(157, 24);
             this.cboPaises.TabIndex = 4;
@@ -74,7 +74,7 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(108, 171);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(468, 199);
@@ -83,7 +83,7 @@
             // btnCargar
             // 
             this.btnCargar.Location = new System.Drawing.Point(445, 97);
-            this.btnCargar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCargar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCargar.Name = "btnCargar";
             this.btnCargar.Size = new System.Drawing.Size(131, 41);
             this.btnCargar.TabIndex = 6;
@@ -93,12 +93,13 @@
             // btnSalir
             // 
             this.btnSalir.Location = new System.Drawing.Point(575, 492);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(4);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(125, 46);
             this.btnSalir.TabIndex = 7;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // frmCarga
             // 
@@ -112,7 +113,7 @@
             this.Controls.Add(this.lblPaises);
             this.Controls.Add(this.lblTrebol);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCarga";
             this.Text = "Carga de Paises";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
