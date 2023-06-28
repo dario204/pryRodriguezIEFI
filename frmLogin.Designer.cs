@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.mcrRegistro = new System.Windows.Forms.GroupBox();
+            this.txtPuntaje = new System.Windows.Forms.TextBox();
+            this.txtEdad = new System.Windows.Forms.TextBox();
             this.txtApellido = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.cboLugarNacimiento = new System.Windows.Forms.ComboBox();
@@ -45,15 +47,17 @@
             this.btnRegistar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
-            this.txtEdad = new System.Windows.Forms.TextBox();
-            this.txtPuntaje = new System.Windows.Forms.TextBox();
-            this.txtBuscar = new System.Windows.Forms.Button();
+            this.btnNuevoPais = new System.Windows.Forms.Button();
+            this.lblIngreso = new System.Windows.Forms.Label();
+            this.txtIngreso = new System.Windows.Forms.TextBox();
             this.mcrRegistro.SuspendLayout();
             this.mcrSexo.SuspendLayout();
             this.SuspendLayout();
             // 
             // mcrRegistro
             // 
+            this.mcrRegistro.Controls.Add(this.txtIngreso);
+            this.mcrRegistro.Controls.Add(this.lblIngreso);
             this.mcrRegistro.Controls.Add(this.txtPuntaje);
             this.mcrRegistro.Controls.Add(this.txtEdad);
             this.mcrRegistro.Controls.Add(this.txtApellido);
@@ -71,10 +75,30 @@
             this.mcrRegistro.Margin = new System.Windows.Forms.Padding(4);
             this.mcrRegistro.Name = "mcrRegistro";
             this.mcrRegistro.Padding = new System.Windows.Forms.Padding(4);
-            this.mcrRegistro.Size = new System.Drawing.Size(391, 488);
+            this.mcrRegistro.Size = new System.Drawing.Size(391, 570);
             this.mcrRegistro.TabIndex = 0;
             this.mcrRegistro.TabStop = false;
             this.mcrRegistro.Text = "Registro de usuario";
+            // 
+            // txtPuntaje
+            // 
+            this.txtPuntaje.Enabled = false;
+            this.txtPuntaje.Location = new System.Drawing.Point(201, 515);
+            this.txtPuntaje.Name = "txtPuntaje";
+            this.txtPuntaje.Size = new System.Drawing.Size(165, 29);
+            this.txtPuntaje.TabIndex = 17;
+            this.txtPuntaje.TextChanged += new System.EventHandler(this.txtPuntaje_TextChanged);
+            this.txtPuntaje.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPuntaje_KeyPress);
+            // 
+            // txtEdad
+            // 
+            this.txtEdad.Enabled = false;
+            this.txtEdad.Location = new System.Drawing.Point(201, 198);
+            this.txtEdad.Name = "txtEdad";
+            this.txtEdad.Size = new System.Drawing.Size(165, 29);
+            this.txtEdad.TabIndex = 16;
+            this.txtEdad.TextChanged += new System.EventHandler(this.txtEdad_TextChanged);
+            this.txtEdad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEdad_KeyPress);
             // 
             // txtApellido
             // 
@@ -122,7 +146,7 @@
             // lblPuntaje
             // 
             this.lblPuntaje.AutoSize = true;
-            this.lblPuntaje.Location = new System.Drawing.Point(9, 339);
+            this.lblPuntaje.Location = new System.Drawing.Point(9, 520);
             this.lblPuntaje.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPuntaje.Name = "lblPuntaje";
             this.lblPuntaje.Size = new System.Drawing.Size(73, 24);
@@ -134,7 +158,7 @@
             this.mcrSexo.Controls.Add(this.rbFemenino);
             this.mcrSexo.Controls.Add(this.rbMasculino);
             this.mcrSexo.ForeColor = System.Drawing.Color.Maroon;
-            this.mcrSexo.Location = new System.Drawing.Point(13, 388);
+            this.mcrSexo.Location = new System.Drawing.Point(13, 332);
             this.mcrSexo.Margin = new System.Windows.Forms.Padding(4);
             this.mcrSexo.Name = "mcrSexo";
             this.mcrSexo.Padding = new System.Windows.Forms.Padding(4);
@@ -234,7 +258,7 @@
             this.btnSalir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.ForeColor = System.Drawing.Color.DarkGreen;
-            this.btnSalir.Location = new System.Drawing.Point(420, 341);
+            this.btnSalir.Location = new System.Drawing.Point(420, 348);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(4);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(124, 44);
@@ -257,47 +281,43 @@
             this.btnLimpiar.UseVisualStyleBackColor = false;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
-            // txtEdad
+            // btnNuevoPais
             // 
-            this.txtEdad.Enabled = false;
-            this.txtEdad.Location = new System.Drawing.Point(201, 198);
-            this.txtEdad.Name = "txtEdad";
-            this.txtEdad.Size = new System.Drawing.Size(165, 29);
-            this.txtEdad.TabIndex = 16;
-            this.txtEdad.TextChanged += new System.EventHandler(this.txtEdad_TextChanged);
-            this.txtEdad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEdad_KeyPress);
+            this.btnNuevoPais.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnNuevoPais.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevoPais.ForeColor = System.Drawing.Color.DarkGreen;
+            this.btnNuevoPais.Location = new System.Drawing.Point(420, 458);
+            this.btnNuevoPais.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNuevoPais.Name = "btnNuevoPais";
+            this.btnNuevoPais.Size = new System.Drawing.Size(124, 65);
+            this.btnNuevoPais.TabIndex = 5;
+            this.btnNuevoPais.Text = "Cargar Nuevo Pais";
+            this.btnNuevoPais.UseVisualStyleBackColor = false;
             // 
-            // txtPuntaje
+            // lblIngreso
             // 
-            this.txtPuntaje.Enabled = false;
-            this.txtPuntaje.Location = new System.Drawing.Point(201, 339);
-            this.txtPuntaje.Name = "txtPuntaje";
-            this.txtPuntaje.Size = new System.Drawing.Size(165, 29);
-            this.txtPuntaje.TabIndex = 17;
-            this.txtPuntaje.TextChanged += new System.EventHandler(this.txtPuntaje_TextChanged);
-            this.txtPuntaje.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPuntaje_KeyPress);
+            this.lblIngreso.AutoSize = true;
+            this.lblIngreso.Location = new System.Drawing.Point(9, 453);
+            this.lblIngreso.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIngreso.Name = "lblIngreso";
+            this.lblIngreso.Size = new System.Drawing.Size(73, 24);
+            this.lblIngreso.TabIndex = 18;
+            this.lblIngreso.Text = "Ingreso";
             // 
-            // txtBuscar
+            // txtIngreso
             // 
-            this.txtBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.txtBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBuscar.ForeColor = System.Drawing.Color.DarkGreen;
-            this.txtBuscar.Location = new System.Drawing.Point(420, 437);
-            this.txtBuscar.Margin = new System.Windows.Forms.Padding(4);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(124, 44);
-            this.txtBuscar.TabIndex = 5;
-            this.txtBuscar.Text = "Buscar";
-            this.txtBuscar.UseVisualStyleBackColor = false;
-            this.txtBuscar.Click += new System.EventHandler(this.txtBuscar_Click);
+            this.txtIngreso.Location = new System.Drawing.Point(201, 448);
+            this.txtIngreso.Name = "txtIngreso";
+            this.txtIngreso.Size = new System.Drawing.Size(165, 29);
+            this.txtIngreso.TabIndex = 19;
             // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(572, 575);
-            this.Controls.Add(this.txtBuscar);
+            this.ClientSize = new System.Drawing.Size(611, 665);
+            this.Controls.Add(this.btnNuevoPais);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnRegistar);
@@ -337,7 +357,9 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.TextBox txtPuntaje;
         private System.Windows.Forms.TextBox txtEdad;
-        private System.Windows.Forms.Button txtBuscar;
+        private System.Windows.Forms.TextBox txtIngreso;
+        private System.Windows.Forms.Label lblIngreso;
+        private System.Windows.Forms.Button btnNuevoPais;
     }
 }
 

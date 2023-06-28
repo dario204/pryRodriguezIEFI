@@ -16,8 +16,7 @@ namespace pryRodriguezIEFI
         OleDbCommand miComando;
         OleDbConnection miConexion;
         OleDbDataReader miLector;
-        OleDbCommand miComandoPais;
-        string CadenaConexion= "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=El_Club.accdb;";
+        string CadenaConexion= "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\\El_Club.accdb;";
         public void ConectarBaseDatos()
         {
             
@@ -26,6 +25,7 @@ namespace pryRodriguezIEFI
                 miConexion = new OleDbConnection();
                 miConexion.ConnectionString = CadenaConexion;
                 miConexion.Open();
+                MessageBox.Show("BD conectada");
 
 
             }
@@ -35,28 +35,22 @@ namespace pryRodriguezIEFI
             }
         }
 
-        public void CargarCboPais(ComboBox cboPais)
+        public void CargarCboPais(ComboBox cboLugarNacimiento)
         {
-            string Conexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=El_Club.accdb;";
+            string CargarCbo = "SELECT DISTINCT Pais From Paises";
             try
             {
-                miConexion = new OleDbConnection(Conexion);
-                miComandoPais.Connection= miConexion;
-                miComandoPais.CommandType = CommandType.Text;
-                miComandoPais.CommandText = "PAISES";
-                miConexion.Open();
-
-                miLector = miComandoPais.ExecuteReader();
-                cboPais.Items.Clear();
-                DataTable dt = new DataTable();
-
-
-                if (miLector.HasRows)
+                //llamo los objetos conexion y comando para manipular la base de datos 
+                miComando = new OleDbCommand();
+                miComando.Connection = miConexion;
+                miComando.CommandType = CommandType.Text;
+                miComando.CommandText = CargarCbo;
+                //reader para leer los datos que contiene
+                miLector=miComando.ExecuteReader();
+                while (miLector.Read())
                 {
-                    dt.Load(miLector);
-                    cboPais.DataSource = dt;
-                    cboPais.ValueMember = "Id";
-                    cboPais.DisplayMember = "Pais";
+                    //Agrego la tabla paises al cboLugarNacimiento
+                    cboLugarNacimiento.Items.Add(miLector["Pais"].ToString());
                 }
 
             }
@@ -66,14 +60,14 @@ namespace pryRodriguezIEFI
             }
             miLector.Close();
         }
-        public void Registrarsocio(string Nombre, string Apellido, string Edad, string Pais, int Puntaje,bool Sexo)
+        public void Registrarsocio(string Nombre, string Apellido, string Pais, int Edad,bool Sexo, decimal Ingreso, int Puntaje)
         {
             string CadenaConexion = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=El_Club.accdb;";
             using (OleDbConnection miConexion= new OleDbConnection(CadenaConexion)) //Conexion a la base de datos
                                                                                     //Se utiliza el bloque using garantizar que la conexión se cierre adecuadamente
             {
                 miConexion.Open();//abre la conexion
-                string AgregarBD = "INSERT INTO SOCIOS (NOMBRE,APELLIDO,LUGAR_NACIMIENTO,EDAD,SEXO,,PUNTAJE) " +
+                string AgregarBD = "INSERT INTO SOCIOS (NOMBRE,APELLIDO,LUGAR_NACIMIENTO,EDAD,SEXO,INGRESO,PUNTAJE) " +
                     "VALUES (@Nombre,@Apellido,@Pais,@Edad,@Sexo,@Puntaje)"; //Crear la consulta SQL
                 try
                 {
@@ -87,6 +81,7 @@ namespace pryRodriguezIEFI
                     miComando.Parameters.AddWithValue("@Pais",Pais);
                     miComando.Parameters.AddWithValue("@Edad", Edad);
                     miComando.Parameters.AddWithValue("@Sexo",Sexo);
+                    miComando.Parameters.AddWithValue("@Ingreso", Ingreso);
                     miComando.Parameters.AddWithValue("@Puntaje", Puntaje);
                     miComando.ExecuteNonQuery(); //Ejecutar el comando
                     miConexion.Close(); //cerrar la conexion
@@ -97,6 +92,45 @@ namespace pryRodriguezIEFI
 
                     MessageBox.Show("Error:" + ex.Message);
                 }
+            }
+        }
+        //Registrar paises nuevos a la base de datos
+        public void RegistrarPais(string Pais, int CodigoPais)
+        {
+            string AgregarBD = "INSERT INTO PAISES(Paises, Codigo_Pais) VALUES (@Paises, @CodigoPais)";
+            try
+            {
+                miConexion = new OleDbConnection(CadenaConexion);
+                miComando = new OleDbCommand();
+                miComando.Connection = miConexion;
+                miComando.Connection.Open();
+                miComando.CommandType = CommandType.Text;
+
+                //Verifica que el pais no exista en la base de datos
+                string verificacionsql = "SELECT COUNT(*) FROM PAISES WHERE Paises= @Paises";
+                miComando.CommandText = verificacionsql;
+                miComando.Parameters.AddWithValue("@Paises", Pais);
+                int count = (int)miComando.ExecuteScalar();
+                if (count > 0 )
+                {
+                    MessageBox.Show("el pais ya fue registrado", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    //Si no existe lo agrega
+                    miComando.Parameters.Clear(); //Limpia los anteriores parametros
+                    miComando.CommandText= AgregarBD;
+                    miComando.Parameters.AddWithValue("@Paises", Pais);
+                    miComando.Parameters.AddWithValue("@CodigoPais", CodigoPais);
+                    miComando.ExecuteNonQuery();
+
+                    MessageBox.Show("El País fue registrado con exito", "", MessageBoxButtons.OK);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex);
+                
             }
         }
     }

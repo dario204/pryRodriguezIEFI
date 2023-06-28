@@ -20,7 +20,22 @@ namespace pryRodriguezIEFI
 
         private void btnRegistar_Click(object sender, EventArgs e)
         {
-            
+            //Determina el tipo de sexo
+            bool sexo = true;
+            if (rbFemenino.Checked == true)
+            {
+                sexo = true;
+            }
+            else
+            {
+                if (rbMasculino.Checked == true)
+                {
+                     sexo = false;
+                }
+            }
+            //Llamo al objeto de la Clase para poder escribir un nuevo socio en la base de datos
+            objManejoBD.Registrarsocio(txtNombre.Text, txtApellido.Text, cboLugarNacimiento.Text, Convert.ToInt32(txtEdad.Text),sexo, Convert.ToDecimal(txtIngreso.Text), Convert.ToInt32(txtPuntaje.Text));
+            Limpiar();
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -31,6 +46,7 @@ namespace pryRodriguezIEFI
         private void frmLogin_Load(object sender, EventArgs e)
         {
             objManejoBD.ConectarBaseDatos();
+            objManejoBD.CargarCboPais(cboLugarNacimiento);
 
         }
 
@@ -139,6 +155,7 @@ namespace pryRodriguezIEFI
 
             }
         }   
+        
         private void Limpiar()
         {
             txtNombre.Clear();
